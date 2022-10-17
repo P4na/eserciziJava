@@ -5,27 +5,27 @@ public class Interruttore {
     Lampadina lampadina;
 
 
-
     public Interruttore(Lampadina lampadina){
         this.lampadina = lampadina;
     }
 
     public void click() {
-        if (clicked == 10) {
-            this.lampadina.stato = Lampadina.Stato.ROTTA;
+        if (clicked >= 10) {
+            this.lampadina.stato = lampadina.stato.ROTTA;
         } else {
-            if (this.lampadina.stato == lampadina.stato.ACCESA) {
-                this.lampadina.stato = Stato.SPENTA;
-            } else {
-                this.lampadina.stato = Stato.ACCESA;
+            if (lampadina.electricity){
+                if (this.lampadina.stato == lampadina.stato.ACCESA) {
+                    this.lampadina.stato = lampadina.stato.SPENTA;
+                } else {
+                    this.lampadina.stato = lampadina.stato.ACCESA;
+                }
+                clicked++;
             }
-            clicked++;
         }
-        return this.stato;
-        }
+        System.out.println(lampadina.getStato());
+    }
+}
 
 
-    public Stato getStato() {
-        return this.lampadina.stato;
-    }
-    }
+
+
